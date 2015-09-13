@@ -5,6 +5,9 @@ As Ecsys is only a few days old, it should not be considered to be even in a pre
 
 I will write a detailed documentation and tutorials explaining how to use it once the engine reaches at least some semblance of stability. Until then, the included examples should serve as the de facto API documentation.
 
+## Example games
+- [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/examples/block_buster/block_buster.html), a Breakout clone (not yet playable)
+
 ## Project priorities / To-Do List
 - Set up some build system to automatically generate minified version of the code
 - Component filter attribute for systems, Game should call update/draw with a filtered list of entities instead of having the systems do the filtering for themselves
