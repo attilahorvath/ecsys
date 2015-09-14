@@ -1,11 +1,27 @@
 (function() {
   'use strict';
 
-  Ecsys.Game = function(canvasSelector) {
-    this.canvasSelector = canvasSelector;
-    this.canvas = document.querySelector(this.canvasSelector);
-    this.canvas.width = 320;
-    this.canvas.height = 240;
+  Ecsys.Game = function(options) {
+    this.options = Ecsys.Utils.mergeObjects(Ecsys.Game.defaultOptions, options);
+
+    this.canvasSelector = this.options.canvasSelector;
+
+    if (typeof this.canvasSelector == 'undefined') {
+      this.canvasSelector = '#ecsys-game';
+      this.canvas = document.createElement('canvas');
+      this.canvas.id = 'ecsys-game';
+      document.body.appendChild(this.canvas);
+    } else {
+      this.canvas = document.querySelectorAll(this.canvasSelector)[0];
+    }
+
+    this.canvas.width = this.options.width;
+    this.canvas.height = this.options.height;
+
+    if (this.options.hideCursor) {
+      this.canvas.style.cursor = 'none';
+    }
+
     this.context = this.canvas.getContext('2d');
 
     this.imageCache = new Ecsys.ImageCache();
@@ -23,6 +39,11 @@
     }
 
     this.lastTime = Date.now();
+  };
+
+  Ecsys.Game.defaultOptions = {
+    width: 320,
+    height: 240
   };
 
   Ecsys.Game.componentMask = function(componentType) {
@@ -49,10 +70,19 @@
     return this.components[componentType][entity];
   };
 
+  Ecsys.Game.prototype.getComponents = function(entity, componentTypes) {
+    var components = [];
+
+    for (var i = 0; i < componentTypes.length; i++) {
+      components[i] = this.components[componentTypes[i]][entity];
+    }
+
+    return components;
+  };
+
   Ecsys.Game.prototype.setComponent = function(entity, componentType, component, setTimeout, removeTimeout) {
     if (typeof setTimeout == 'undefined') {
       this.componentMasks[entity] |= Ecsys.Game.componentMask(componentType);
-
       return this.components[componentType][entity] = component;
     } else {
       this.addTimer(function() {
@@ -67,10 +97,36 @@
     }
   };
 
+  Ecsys.Game.prototype.setComponents = function(entity, components, setTimeout, removeTimeout) {
+    if (typeof setTimeout == 'undefined') {
+      for (var i = 0; i < components.length; i++) {
+        this.componentMasks[entity] |= Ecsys.Game.componentMask(components[i][0]);
+        this.components[components[i][0]][entity] = components[i][1];
+      }
+    } else {
+      this.addTimer(function() {
+        this.setComponents(entity, components);
+      }.bind(this), setTimeout);
+    }
+
+    if (typeof removeTimeout != 'undefined') {
+      this.addTimer(function() {
+        var componentTypes = [];
+
+        for (var i = 0; i < components.length; i++) {
+          componentTypes.push(components[0]);
+        }
+
+        this.removeComponents(entity, componentTypes);
+      }.bind(this), removeTimeout);
+    }
+
+    return entity;
+  };
+
   Ecsys.Game.prototype.removeComponent = function(entity, componentType, removeTimeout) {
     if (typeof removeTimeout == 'undefined') {
       this.componentMasks[entity] &= ~Ecsys.Game.componentMask(componentType);
-
       delete this.components[componentType][entity];
     } else {
       this.addTimer(function() {
@@ -79,17 +135,30 @@
     }
   };
 
-  Ecsys.Game.prototype.hasComponents = function(entity) {
-    for (var i = 1; i < arguments.length; i++) {
-      if (!(this.componentMasks[entity] & Ecsys.Game.componentMask(arguments[i]))) {
-        return false;
+  Ecsys.Game.prototype.removeComponents = function(entity, componentTypes, removeTimeout) {
+    if (typeof removeTimeout == 'undefined') {
+      for (var i = 0; i < componentTypes.length; i++) {
+        this.componentMasks[entity] &= ~Ecsys.Game.componentMask(componentTypes[i]);
+        delete this.components[componentTypes[i]][entity];
       }
+    } else {
+      this.addTimer(function() {
+        this.removeComponents(entity, componentTypes);
+      }.bind(this), removeTimeout);
     }
-
-    return true;
   };
 
-  Ecsys.Game.prototype.createEntity = function(name) {
+  Ecsys.Game.prototype.hasComponents = function(entity, components) {
+    var mask = 0;
+
+    for (var i = 0; i < components.length; i++) {
+      mask |= Ecsys.Game.componentMask(components[i]);
+    }
+
+    return (this.componentMasks[entity] & mask) == mask;
+  };
+
+  Ecsys.Game.prototype.createEntity = function(components, name) {
     var entity = null;
 
     for (var i = 0; i < this.componentMasks.length; i++) {
@@ -102,7 +171,13 @@
       entity = this.componentMasks.length;
     }
 
-    this.namedEntities[name] = entity;
+    if (typeof components != 'undefined') {
+      this.setComponents(entity, components);
+    }
+
+    if (typeof name != 'undefined') {
+      this.namedEntities[name] = entity;
+    }
 
     return entity;
   };
@@ -114,6 +189,16 @@
   Ecsys.Game.prototype.destroyEntity = function(entity) {
     delete this.componentMasks[entity];
     delete this.namedEntities[name];
+  };
+
+  Ecsys.Game.prototype.forEachEntity = function(callback, componentTypes) {
+    componentTypes = componentTypes || [];
+
+    for (var i = 0; i < this.getEntityCount(); i++) {
+      if (this.hasComponents(i, componentTypes)) {
+        callback(i, this.getComponents(i, componentTypes));
+      }
+    }
   };
 
   Ecsys.Game.prototype.registerComponentType = function(componentType) {
@@ -148,11 +233,23 @@
       if (typeof this.systems[i].update != 'undefined') {
         this.systems[i].update(deltaTime);
       }
+
+      if (typeof this.systems[i].updateEntity != 'undefined') {
+        this.forEachEntity(function(entity, components) {
+          this.systems[i].updateEntity(deltaTime, entity, components);
+        }.bind(this), this.systems[i].componentTypes);
+      }
     }
 
     for (var i = 0; i < this.systems.length; i++) {
       if (typeof this.systems[i].draw != 'undefined') {
         this.systems[i].draw(deltaTime);
+      }
+
+      if (typeof this.systems[i].drawEntity != 'undefined') {
+        this.forEachEntity(function(entity, components) {
+          this.systems[i].drawEntity(deltaTime, entity, components);
+        }.bind(this), this.systems[i].componentTypes);
       }
     }
 

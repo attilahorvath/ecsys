@@ -2,16 +2,16 @@
   'use strict';
 
   Ecsys.Easings = {
-    linear: function(currentTime, duration) {
-      return currentTime / duration;
+    linear: function(t) {
+      return t;
     },
 
-    easeInCubic: function(currentTime, duration) {
-      return Math.pow(currentTime / duration, 3);
+    easeInCubic: function(t) {
+      return t * t * t;
     },
 
-    easeOutElastic: function(currentTime, duration) {
-      return Math.pow(2, -10 * (currentTime / duration)) * Math.sin(((currentTime / duration) - 0.075) * (2 * Math.PI) / 0.3) + 1;
+    easeOutElastic: function(t) {
+      return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
     }
   };
 })();

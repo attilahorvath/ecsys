@@ -2,6 +2,20 @@
   'use strict';
 
   Ecsys.Utils = {
+    mergeObjects: function(a, b) {
+      var merged = {};
+
+      for (var attribute in a) {
+        merged[attribute] = a[attribute];
+      }
+
+      for (var attribute in b) {
+        merged[attribute] = b[attribute];
+      }
+
+      return merged;
+    },
+
     measureVector: function(vector) {
       return Math.sqrt(vector.x * vector.x + vector.y * vector.y);
     },

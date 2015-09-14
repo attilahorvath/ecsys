@@ -7,16 +7,10 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 
 ## Example games
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/examples/block_buster/block_buster.html), a Breakout clone (not yet playable)
+- [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/examples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
-- Easing functions should only take one argument, t = currentTime / duration
-- Look into [Electron](https://github.com/atom/electron) for creating desktop games
-- Set up some build system to automatically generate minified version of the code
-- Component filter attribute for systems, Game should call update/draw with a filtered list of entities instead of having the systems do the filtering for themselves
-- Make sample games - split screen shooter, breakout
-- Game option object - canvas size, hide mouse cursor, lock pointer, auto-resize canvas, etc.
 - Entity templates - named collection of components, can spawn instances
-- System configuration options - e.g. MouseInput restricting position or not?
 - Game states with transitions
 - Tree-view for entities and their components
 - FPS counter
@@ -45,6 +39,9 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Sprite frame-by-frame animations
 - Trail component (ball trail)
 - Consolidate components (position-size-offset-constraints?)
+- Look into [Electron](https://github.com/atom/electron) for creating desktop games with Ecsys
+- Set up some build system to automatically generate minified version of the code
+- Make more sample games
 
 Ecsys is licensed under the included MIT license.
 
