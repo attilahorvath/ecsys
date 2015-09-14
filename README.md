@@ -9,9 +9,12 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/examples/block_buster/block_buster.html), a Breakout clone (not yet playable)
 
 ## Project priorities / To-Do List
+- Easing functions should only take one argument, t = currentTime / duration
+- Look into [Electron](https://github.com/atom/electron) for creating desktop games
 - Set up some build system to automatically generate minified version of the code
 - Component filter attribute for systems, Game should call update/draw with a filtered list of entities instead of having the systems do the filtering for themselves
 - Make sample games - split screen shooter, breakout
+- Game option object - canvas size, hide mouse cursor, lock pointer, auto-resize canvas, etc.
 - Entity templates - named collection of components, can spawn instances
 - System configuration options - e.g. MouseInput restricting position or not?
 - Game states with transitions
