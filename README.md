@@ -10,6 +10,8 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/examples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
+- Composite entities - entities that are made up of other entities, such as a tank base and turret
+- Sprites that are drawn straight to the canvas without cameras - useful for UI elements
 - Entity templates - named collection of components, can spawn instances
 - Game states with transitions
 - Tree-view for entities and their components

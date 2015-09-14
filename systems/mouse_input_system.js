@@ -8,6 +8,7 @@
     initialize: function() {
       this.mousePosition = { x: 0, y: 0 };
       this.previousPosition = { x: 0, y: 0 };
+      this.deltaPosition = { x: 0, y: 0 };
 
       this.canvas = this.game.getCanvas();
 
@@ -21,17 +22,16 @@
     },
 
     update: function(deltaTime) {
-      var deltaPosition = { x: this.mousePosition.x - this.previousPosition.x, y: this.mousePosition.y - this.previousPosition.y };
+      this.deltaPosition = { x: this.mousePosition.x - this.previousPosition.x, y: this.mousePosition.y - this.previousPosition.y };
 
       this.game.forEachEntity(function (entity, components) {
         var mouseInput = components[0];
-        var position = this.game.getComponent(entity, 'Position');
-        var velocity = this.game.getComponent(entity, 'Velocity') || this.game.setComponent(entity, 'Velocity', { x: 0, y: 0 });
 
-        var mouseVelocity = mouseInput.velocity || { x: 1, y: 1 };
+        var inputHandlers = mouseInput.inputHandlers || [Ecsys.InputHandlers.pointer];
 
-        velocity.x = (deltaPosition.x * mouseVelocity.x) / deltaTime;
-        velocity.y = (deltaPosition.y * mouseVelocity.y) / deltaTime;
+        for (var i = 0; i < inputHandlers.length; i++) {
+          inputHandlers[i](this, entity, mouseInput, deltaTime);
+        }
       }.bind(this), this.componentTypes);
 
       this.previousPosition = this.mousePosition;

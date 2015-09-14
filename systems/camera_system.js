@@ -15,10 +15,9 @@
 
       var cameraPos = { x: cameraPosition.x - cameraOffset.x, y: cameraPosition.y - cameraOffset.y };
 
-      context.strokeRect(camera.canvasX, camera.canvasY, cameraSize.width, cameraSize.height);
-
       context.save();
 
+      context.beginPath();
       context.rect(camera.canvasX, camera.canvasY, cameraSize.width, cameraSize.height);
       context.clip();
 
@@ -31,7 +30,7 @@
 
         var entityPos = { x: entityPosition.x - entityOffset.x, y: entityPosition.y - entityOffset.y };
 
-        if (!(entityPos.x + entitySize.width <= entityPos.x || entityPos.x >= cameraPosition.x + cameraSize.width || entityPos.y + entitySize.height <= cameraPosition.y || entityPosition.y >= entityPos.y + cameraSize.height)) {
+        if (!(entityPos.x + entitySize.width <= cameraPos.x || entityPos.x >= cameraPos.x + cameraSize.width || entityPos.y + entitySize.height <= cameraPos.y || entityPosition.y >= cameraPos.y + cameraSize.height)) {
           var sprite;
           var image;
 
@@ -40,7 +39,10 @@
           }
 
           if (image) {
-            context.drawImage(image, sprite.x, sprite.y, sprite.width, sprite.height, entityPos.x, entityPos.y, entitySize.width, entitySize.height);
+            var imagePosition = { x: sprite.x || 0, y: sprite.y || 0 };
+            var imageSize = { width: sprite.width || entitySize.width, height: sprite.height || entitySize.height };
+
+            context.drawImage(image, imagePosition.x, imagePosition.y, imageSize.width, imageSize.height, entityPos.x, entityPos.y, entitySize.width, entitySize.height);
           }
           else {
             context.fillRect(entityPos.x, entityPos.y, entitySize.width, entitySize.height);
@@ -49,6 +51,8 @@
       }.bind(this), ['Position', 'Size', 'Sprite']);
 
       context.restore();
+
+      context.strokeRect(camera.canvasX, camera.canvasY, cameraSize.width, cameraSize.height);
     }
   };
 })();

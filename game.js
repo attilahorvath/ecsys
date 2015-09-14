@@ -223,7 +223,7 @@
     var currentTime = Date.now();
     var deltaTime = currentTime - this.lastTime;
 
-    this.canvas.width = this.canvas.width;
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     for (var i = 0; i < this.timers.length; i++) {
       this.timers[i].update(deltaTime);

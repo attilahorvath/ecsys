@@ -21,7 +21,8 @@
       var camera = game.createEntity([
         ['Position', { x: 0, y: 0 }],
         ['Size', { width: 320, height: 240 }],
-        ['Camera', { canvasX: 0, canvasY: 0 }]
+        ['Camera', { canvasX: 0, canvasY: 0 }],
+        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68 } }]
       ], 'Camera');
 
       var paddle = game.createEntity([
