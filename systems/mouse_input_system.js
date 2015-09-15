@@ -27,7 +27,7 @@
       this.game.forEachEntity(function (entity, components) {
         var mouseInput = components[0];
 
-        var inputHandlers = mouseInput.inputHandlers || [Ecsys.InputHandlers.pointer];
+        var inputHandlers = mouseInput.inputHandlers || [Ecsys.MouseInputHandlers.pointer];
 
         for (var i = 0; i < inputHandlers.length; i++) {
           inputHandlers[i](this, entity, mouseInput, deltaTime);

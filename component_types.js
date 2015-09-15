@@ -6,6 +6,7 @@
 
   Ecsys.ComponentTypes.push('Offset');
   Ecsys.ComponentTypes.push('Velocity');
+  Ecsys.ComponentTypes.push('Rotation');
 
   Ecsys.ComponentTypes.push('KeyboardInput');
   Ecsys.ComponentTypes.push('MouseInput');

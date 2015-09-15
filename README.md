@@ -10,6 +10,9 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/examples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
+- Click event, mouse buttons
+- Add justPressed, justReleased to KeyboardInputSystem
+- Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Sprites that are drawn straight to the canvas without cameras - useful for UI elements
 - Entity templates - named collection of components, can spawn instances
@@ -25,7 +28,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Z-indexing
 - Tilemaps
 - Particles
-- Rotating, angles
+- Fix sprite clipping with rotated camera
 - Chained animations
 - Scale effects
 - Scene graph for collision handling
@@ -39,7 +42,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Debug mode, console log statements - component manipulations, entities, systems, etc.
 - Events for entity/component manipulations
 - Sprite frame-by-frame animations
-- Trail component (ball trail)
+- Trail component (ball trail, tank trail on the grass)
 - Consolidate components (position-size-offset-constraints?)
 - Look into [Electron](https://github.com/atom/electron) for creating desktop games with Ecsys
 - Set up some build system to automatically generate minified version of the code

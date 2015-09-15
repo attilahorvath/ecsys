@@ -32,7 +32,8 @@
         ['Position', { x: 0, y: 0 }],
         ['Size', { width: 32, height: 32 }],
         ['Offset', { x: 16, y: 16 }],
-        ['KeyboardInput', { speed: 0.1 }],
+        ['Velocity', { x: 0, y: 0, setRotation: true }],
+        ['KeyboardInput', { speed: 0.1, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Shake', { intensity: 1.1 }],
         ['Sprite', { source: 'images/tank.png' }]
       ], 'TankA');
@@ -41,9 +42,10 @@
         ['Position', { x: 0, y: 100 }],
         ['Size', { width: 32, height: 32 }],
         ['Offset', { x: 16, y: 16 }],
-        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68 } }],
+        ['Velocity', { x: 0, y: 0, setRotation: true }],
+        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68, fire: 17 }, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Shake', { intensity: 1.1 }],
-        ['Sprite', { source: 'images/tank.png' }]
+        ['Sprite', { source: 'images/tank2.png' }]
       ], 'TankA');
 
       var cameraA = game.createEntity([
