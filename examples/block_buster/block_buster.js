@@ -5,7 +5,7 @@
     Systems: {},
 
     run: function() {
-      var game = new Ecsys.Game();
+      var game = new Ecsys.Game({ hideCursor: true });
 
       game.systems.push(Ecsys.Systems.KeyboardInputSystem);
       game.systems.push(Ecsys.Systems.MouseInputSystem);
