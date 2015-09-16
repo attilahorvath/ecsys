@@ -10,6 +10,8 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/examples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
+- Alpha component
+- Lifetime component - entity gets destroyed after some timeout has passed
 - Click event, mouse buttons
 - Add justPressed, justReleased to KeyboardInputSystem
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
