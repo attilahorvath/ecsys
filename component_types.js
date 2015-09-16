@@ -5,8 +5,10 @@
   Ecsys.ComponentTypes.push('Size');
 
   Ecsys.ComponentTypes.push('Offset');
-  Ecsys.ComponentTypes.push('Velocity');
   Ecsys.ComponentTypes.push('Rotation');
+
+  Ecsys.ComponentTypes.push('Velocity');
+  Ecsys.ComponentTypes.push('Transparency');
 
   Ecsys.ComponentTypes.push('KeyboardInput');
   Ecsys.ComponentTypes.push('MouseInput');
@@ -16,6 +18,7 @@
 
   Ecsys.ComponentTypes.push('Constraints');
   Ecsys.ComponentTypes.push('Glue');
+
   Ecsys.ComponentTypes.push('Collidable');
 
   Ecsys.ComponentTypes.push('Animations');

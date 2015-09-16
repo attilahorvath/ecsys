@@ -2,7 +2,7 @@
   'use strict';
 
   Ecsys.Utils = {
-    mergeObjects: function(a, b) {
+    merge: function(a, b) {
       var merged = {};
 
       for (var attribute in a) {
@@ -14,6 +14,16 @@
       }
 
       return merged;
+    },
+
+    clone: function(object) {
+      var clone = {};
+
+      for (var attribute in object) {
+        clone[attribute] = object[attribute];
+      }
+
+      return clone;
     },
 
     measureVector: function(vector) {

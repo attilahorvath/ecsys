@@ -30,6 +30,7 @@
         var entitySize = this.game.getComponent(e, 'Size');
         var entityOffset = this.game.getComponent(e, 'Offset') || { x: 0, y: 0 };
         var entityRotation = this.game.getComponent(e, 'Rotation') || { angle: 0 };
+        var entityTransparency = this.game.getComponent(e, 'Transparency') || { alpha: 1 };
 
         var entityPos = { x: entityPosition.x - entityOffset.x, y: entityPosition.y - entityOffset.y };
 
@@ -42,6 +43,8 @@
           }
 
           context.save();
+
+          context.globalAlpha = entityTransparency.alpha;
           context.translate(entityPosition.x, entityPosition.y);
           context.rotate(entityRotation.angle);
 

@@ -2,7 +2,7 @@
   'use strict';
 
   Ecsys.Game = function(options) {
-    this.options = Ecsys.Utils.mergeObjects(Ecsys.Game.defaultOptions, options);
+    this.options = Ecsys.Utils.merge(Ecsys.Game.defaultOptions, options);
 
     this.canvasSelector = this.options.canvasSelector;
 
@@ -30,6 +30,7 @@
     this.components = {};
 
     this.namedEntities = {};
+    this.templates = {};
 
     this.systems = [];
     this.timers = [];
@@ -78,6 +79,10 @@
     }
 
     return components;
+  };
+
+  Ecsys.Game.prototype.setTemplate = function(template, components) {
+    this.templates[template] = components;
   };
 
   Ecsys.Game.prototype.setComponent = function(entity, componentType, component, setTimeout, removeTimeout) {
@@ -177,6 +182,23 @@
 
     if (typeof name != 'undefined') {
       this.namedEntities[name] = entity;
+    }
+
+    return entity;
+  };
+
+  Ecsys.Game.prototype.createEntityFromTemplate = function(template, components, name) {
+    var entityTemplate = this.templates[template];
+    var templateComponents = [];
+
+    for (var i = 0; i < entityTemplate.length; i++) {
+      templateComponents.push([entityTemplate[i][0], Ecsys.Utils.clone(entityTemplate[i][1])]);
+    }
+
+    var entity = this.createEntity(templateComponents, name);
+
+    if (typeof components != 'undefined') {
+      this.setComponents(entity, components);
     }
 
     return entity;

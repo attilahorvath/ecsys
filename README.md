@@ -10,14 +10,12 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/examples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
-- Alpha component
 - Lifetime component - entity gets destroyed after some timeout has passed
 - Click event, mouse buttons
 - Add justPressed, justReleased to KeyboardInputSystem
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Sprites that are drawn straight to the canvas without cameras - useful for UI elements
-- Entity templates - named collection of components, can spawn instances
 - Game states with transitions
 - Tree-view for entities and their components
 - FPS counter
@@ -25,7 +23,8 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - JSON import/export of entities and their components
 - More easing functions
 - Preload images, images loaded event
-- AABB collisions, basic physics
+- OBB collisions, basic physics
+- Basic ray casting
 - UI elements
 - Z-indexing
 - Tilemaps

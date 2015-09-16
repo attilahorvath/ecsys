@@ -28,7 +28,7 @@
         }
       }
 
-      var tankA = game.createEntity([
+      game.setTemplate('Tank', [
         ['Position', { x: 0, y: 0 }],
         ['Size', { width: 32, height: 32 }],
         ['Offset', { x: 16, y: 16 }],
@@ -36,28 +36,35 @@
         ['KeyboardInput', { speed: 0.1, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Shake', { intensity: 1.1 }],
         ['Sprite', { source: 'images/tank.png' }]
-      ], 'TankA');
+      ]);
 
-      var tankB = game.createEntity([
-        ['Position', { x: 0, y: 100 }],
-        ['Size', { width: 32, height: 32 }],
-        ['Offset', { x: 16, y: 16 }],
-        ['Velocity', { x: 0, y: 0, setRotation: true }],
-        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68, fire: 17 }, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
-        ['Shake', { intensity: 1.1 }],
-        ['Sprite', { source: 'images/tank2.png' }]
-      ], 'TankA');
-
-      var cameraA = game.createEntity([
+      game.setTemplate('Camera', [
         ['Position', { x: 0, y: 0 }],
         ['Size', { width: 320, height: 480 }],
-        ['Camera', { canvasX: 0, canvasY: 0 }],
+        ['Camera', { canvasX: 0, canvasY: 0 }]
+      ]);
+
+      game.setTemplate('Bullet', [
+        ['Position', { x: 0, y: 0 }],
+        ['Size', { width: 16, height: 16 }],
+        ['Offset', { x: 8, y: 8 }],
+        ['Velocity', { x: 0, y: 0, setRotation: true }],
+        ['Sprite', { source: 'images/bullet.png' }]
+      ]);
+
+      var tankA = game.createEntityFromTemplate('Tank', [], 'TankA');
+
+      var tankB = game.createEntityFromTemplate('Tank', [
+        ['Position', { x: 0, y: 100 }],
+        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68, fire: 17 }, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
+        ['Sprite', { source: 'images/tank2.png' }]
+      ], 'TankB');
+
+      var cameraA = game.createEntityFromTemplate('Camera', [
         ['Glue', { target: tankA, offset: { x: -150, y: -230 } }]
       ], 'CameraA');
 
-      var cameraB = game.createEntity([
-        ['Position', { x: 0, y: 0 }],
-        ['Size', { width: 320, height: 480 }],
+      var cameraB = game.createEntityFromTemplate('Camera', [
         ['Camera', { canvasX: 320, canvasY: 0 }],
         ['Glue', { target: tankB, offset: { x: -150, y: -230 } }]
       ], 'CameraB');
