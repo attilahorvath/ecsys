@@ -10,10 +10,11 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/samples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
 
 ## Project priorities / To-Do List
+- Skew component
 - Error reporting - wrong component name, nonexistent property, etc.
 - Delete expired timers
 - Acceleration component
-- Click event, mouse buttons
+- Click event, mouse buttons, justPressed, justReleased
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Sprites that are drawn straight to the canvas without cameras - useful for UI elements
@@ -24,7 +25,9 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - JSON import/export of entities and their components
 - More easing functions
 - Preload images, images loaded event
-- OBB collisions, basic physics
+- OBB collisions - separating axis theorem
+- Support for arbitrary convex polygons
+- Basic physics
 - Basic ray casting
 - UI elements
 - Z-indexing
