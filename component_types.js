@@ -5,6 +5,7 @@
   Ecsys.ComponentTypes.push('Size');
 
   Ecsys.ComponentTypes.push('Offset');
+  Ecsys.ComponentTypes.push('Scaling');
   Ecsys.ComponentTypes.push('Rotation');
 
   Ecsys.ComponentTypes.push('Velocity');
@@ -23,4 +24,6 @@
 
   Ecsys.ComponentTypes.push('Animations');
   Ecsys.ComponentTypes.push('Shake');
+
+  Ecsys.ComponentTypes.push('Lifetime');
 })();

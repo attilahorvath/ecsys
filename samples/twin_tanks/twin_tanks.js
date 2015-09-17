@@ -15,6 +15,9 @@
       game.systems.push(Ecsys.Systems.GlueSystem);
       game.systems.push(Ecsys.Systems.CollisionSystem);
       game.systems.push(Ecsys.Systems.CameraSystem);
+      game.systems.push(Ecsys.Systems.LifetimeSystem);
+      game.systems.push(TwinTanks.Systems.TankSystem);
+
 
       game.initialize();
 
@@ -35,7 +38,8 @@
         ['Velocity', { x: 0, y: 0, setRotation: true }],
         ['KeyboardInput', { speed: 0.1, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Shake', { intensity: 1.1 }],
-        ['Sprite', { source: 'images/tank.png' }]
+        ['Sprite', { source: 'images/tank.png' }],
+        ['Tank']
       ]);
 
       game.setTemplate('Camera', [
@@ -52,11 +56,25 @@
         ['Sprite', { source: 'images/bullet.png' }]
       ]);
 
+      game.setTemplate('Smoke', [
+        ['Position', { x: 0, y: 0 }],
+        ['Size', { width: 32, height: 32 }],
+        ['Offset', { x: 16, y: 16 }],
+        ['Transparency', { alpha: 0.9 }],
+        ['Sprite', { source: 'images/smoke.png' }],
+        ['Scaling', { x: 1, y: 1 }],
+        ['Animations', [
+          { component: 'Transparency', property: 'alpha', target: 0, duration: 1000 },
+          { component: 'Scaling', target: { x: 5, y: 5 }, duration: 1000 }
+        ]],
+        ['Lifetime', { timeout: 1000 }]
+      ]);
+
       var tankA = game.createEntityFromTemplate('Tank', [], 'TankA');
 
       var tankB = game.createEntityFromTemplate('Tank', [
         ['Position', { x: 0, y: 100 }],
-        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68, fire: 17 }, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
+        ['KeyboardInput', { speed: 0.1, bindings: { up: 87, down: 83, left: 65, right: 68, fire: 70 }, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Sprite', { source: 'images/tank2.png' }]
       ], 'TankB');
 

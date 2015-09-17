@@ -11,7 +11,7 @@
       for (var a = 0; a < animations.length; a++) {
         var animation = animations[a];
         if (animation) {
-          var component = this.game.getComponent(e, animation.component);
+          var component = this.game.getComponent(entity, animation.component);
 
           if (typeof animation.currentTime == 'undefined') {
             animation.vectorValue = typeof animation.target == 'object';
@@ -19,7 +19,7 @@
 
             if (animation.vectorValue) {
               animation.start = { x: component.x, y: component.y };
-              animation.vector = Ecsys.Game.Utils.subtractVector(component, animation.target);
+              animation.vector = Ecsys.Utils.subtractVector(component, animation.target);
             } else {
               animation.start = component[animation.property];
               animation.distance = animation.target - animation.start;
@@ -27,7 +27,7 @@
           }
 
           if (animation.currentTime < animation.duration) {
-            var easing = animation.easing || Ecsys.Game.Easings.linear;
+            var easing = animation.easing || Ecsys.Easings.linear;
             var progress = easing(animation.currentTime / animation.duration);
 
             if (animation.vectorValue) {

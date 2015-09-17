@@ -29,6 +29,7 @@
         var entityPosition = this.game.getComponent(e, 'Position');
         var entitySize = this.game.getComponent(e, 'Size');
         var entityOffset = this.game.getComponent(e, 'Offset') || { x: 0, y: 0 };
+        var entityScaling = this.game.getComponent(e, 'Scaling') || { x: 1, y: 1 };
         var entityRotation = this.game.getComponent(e, 'Rotation') || { angle: 0 };
         var entityTransparency = this.game.getComponent(e, 'Transparency') || { alpha: 1 };
 
@@ -47,6 +48,7 @@
           context.globalAlpha = entityTransparency.alpha;
           context.translate(entityPosition.x, entityPosition.y);
           context.rotate(entityRotation.angle);
+          context.scale(entityScaling.x, entityScaling.y);
 
           if (image) {
             var imagePosition = { x: sprite.x || 0, y: sprite.y || 0 };

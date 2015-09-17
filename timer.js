@@ -1,9 +1,12 @@
 (function() {
   'use strict';
 
-  Ecsys.Timer = function(callback, timeout) {
+  Ecsys.Timer = function(callback, timeout, repeat) {
     this.callback = callback;
     this.timeout = timeout;
+    this.repeat = repeat;
+
+    this.originalTimeout = timeout;
     this.active = true;
   };
 
@@ -16,7 +19,12 @@
 
     if (this.timeout <= 0 && this.active) {
       this.callback();
-      this.active = false;
+
+      if (this.repeat) {
+        this.timeout = this.originalTimeout;
+      } else {
+        this.active = false;
+      }
     }
   };
 })();

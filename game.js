@@ -32,6 +32,8 @@
     this.namedEntities = {};
     this.templates = {};
 
+    this.deadEntities = [];
+
     this.systems = [];
     this.timers = [];
 
@@ -88,7 +90,7 @@
   Ecsys.Game.prototype.setComponent = function(entity, componentType, component, setTimeout, removeTimeout) {
     if (typeof setTimeout == 'undefined') {
       this.componentMasks[entity] |= Ecsys.Game.componentMask(componentType);
-      return this.components[componentType][entity] = component;
+      return this.components[componentType][entity] = (component || {});
     } else {
       this.addTimer(function() {
         this.setComponent(entity, componentType, component);
@@ -106,7 +108,7 @@
     if (typeof setTimeout == 'undefined') {
       for (var i = 0; i < components.length; i++) {
         this.componentMasks[entity] |= Ecsys.Game.componentMask(components[i][0]);
-        this.components[components[i][0]][entity] = components[i][1];
+        this.components[components[i][0]][entity] = components[i][1] || {};
       }
     } else {
       this.addTimer(function() {
@@ -209,8 +211,7 @@
   };
 
   Ecsys.Game.prototype.destroyEntity = function(entity) {
-    delete this.componentMasks[entity];
-    delete this.namedEntities[name];
+    this.deadEntities.push(entity);
   };
 
   Ecsys.Game.prototype.forEachEntity = function(callback, componentTypes) {
@@ -227,8 +228,8 @@
     this.components[componentType] = [];
   };
 
-  Ecsys.Game.prototype.addTimer = function(callback, timeout) {
-    this.timers.push(new Ecsys.Timer(callback, timeout));
+  Ecsys.Game.prototype.addTimer = function(callback, timeout, repeat) {
+    this.timers.push(new Ecsys.Timer(callback, timeout, repeat));
   };
 
   Ecsys.Game.prototype.initialize = function() {
@@ -274,6 +275,24 @@
         }.bind(this), this.systems[i].componentTypes);
       }
     }
+
+    for (var e = 0; e < this.deadEntities.length; e++) {
+      var entity = this.deadEntities[e];
+
+      delete this.componentMasks[entity];
+
+      for (var i = 0; i < Ecsys.ComponentTypes.length; i++) {
+        delete this.components[Ecsys.ComponentTypes[i]][entity];
+      }
+
+      for (var name in this.namedEntities) {
+        if (this.namedEntities[name] == entity) {
+          delete this.namedEntities[entity];
+        }
+      }
+    }
+
+    this.deadEntities = [];
 
     this.lastTime = currentTime;
 

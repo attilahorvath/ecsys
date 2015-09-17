@@ -7,6 +7,9 @@
 
     initialize: function() {
       this.keysDown = {};
+      this.lastDown = {};
+      this.justPressed = {};
+      this.justReleased = {};
 
       addEventListener('keydown', function(event) {
         this.keysDown[event.keyCode] = true;
@@ -25,14 +28,33 @@
       }.bind(this));
     },
 
-    updateEntity: function(deltaTime, entity, components) {
-      var keyboardInput = components[0];
+    update: function(deltaTime) {
+      this.justPressed = {};
+      this.justReleased = {};
 
-      var inputHandlers = keyboardInput.inputHandlers || [Ecsys.KeyboardInputHandlers.keyboardMovement];
-
-      for (var i = 0; i < inputHandlers.length; i++) {
-        inputHandlers[i](this, entity, keyboardInput, deltaTime);
+      for (var keyCode in this.keysDown) {
+        if (!this.lastDown[keyCode]) {
+          this.justPressed[keyCode] = true;
+        }
       }
+
+      for (var keyCode in this.lastDown) {
+        if (!this.keysDown[keyCode]) {
+          this.justReleased[keyCode] = true;
+        }
+      }
+
+      this.game.forEachEntity(function (entity, components) {
+        var keyboardInput = components[0];
+
+        var inputHandlers = keyboardInput.inputHandlers || [Ecsys.KeyboardInputHandlers.keyboardMovement];
+
+        for (var i = 0; i < inputHandlers.length; i++) {
+          inputHandlers[i](this, entity, keyboardInput, deltaTime);
+        }
+      }.bind(this), this.componentTypes);
+
+      this.lastDown = Ecsys.Utils.clone(this.keysDown);
     }
   };
 })();

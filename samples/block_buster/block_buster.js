@@ -15,6 +15,7 @@
       game.systems.push(Ecsys.Systems.GlueSystem);
       game.systems.push(Ecsys.Systems.CollisionSystem);
       game.systems.push(Ecsys.Systems.CameraSystem);
+      game.systems.push(Ecsys.Systems.LifetimeSystem);
 
       game.initialize();
 

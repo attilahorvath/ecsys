@@ -17,13 +17,27 @@
     },
 
     clone: function(object) {
-      var clone = {};
+      if (typeof object == 'object') {
+        if (Array.isArray(object)) {
+          var clone = [];
 
-      for (var attribute in object) {
-        clone[attribute] = object[attribute];
+          for (var i = 0; i < object.length; i++) {
+            clone.push(Ecsys.Utils.clone(object[i]));
+          }
+
+          return clone;
+        } else {
+          var clone = {};
+
+          for (var attribute in object) {
+            clone[attribute] = Ecsys.Utils.clone(object[attribute]);
+          }
+
+          return clone;
+        }
+      } else {
+        return object;
       }
-
-      return clone;
     },
 
     measureVector: function(vector) {
