@@ -11,10 +11,12 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 
 ## Project priorities / To-Do List
 - Skew component
+- Tint component
+- Text rendering - font, size, color, etc.
 - Error reporting - wrong component name, nonexistent property, etc.
 - Delete expired timers
 - Acceleration component
-- Click event, mouse buttons, justPressed, justReleased
+- Click event, mouse buttons, justPressed, justReleased, investigate options for capturing all mouse buttons
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Sprites that are drawn straight to the canvas without cameras - useful for UI elements
@@ -50,7 +52,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Consolidate components (position-size-offset-constraints?)
 - Look into [Electron](https://github.com/atom/electron) for creating desktop games with Ecsys
 - Set up some build system to automatically generate minified version of the code
-- Make more sample games
+- Make more sample games - clone some simple ones, such as circular pong, Pop the Lock, etc.
 
 Ecsys is licensed under the included MIT license.
 
