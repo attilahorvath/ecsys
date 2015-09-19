@@ -1,5 +1,9 @@
 (function() {
   'use strict';
 
-  BlockBuster.Systems.PaddleSystem = {};
+  BlockBuster.Systems.PaddleSystem = {
+    componentTypes: ['Paddle'],
+
+    updateEntity: function(deltaTime, entity, components) {}
+  };
 })();

@@ -28,7 +28,7 @@
 
       var paddle = game.createEntity([
         ['Position', { x: 0, y: 220 }],
-        ['MouseInput', { velocity: { x: 1, y: 0 } }],
+        ['MouseInput', { velocity: { x: 1, y: 0 }, inputHandlers: [Ecsys.MouseInputHandlers.pointer, BlockBuster.MouseInputHandlers.paddle] }],
         ['Size', { width: 80, height: 20 }],
         ['Offset', { x: 40, y: 10 }],
         ['Constraints', { minimum: { x: 0, y: 0 }, maximum: { x: 240, y: 240 } }],
@@ -56,6 +56,7 @@
 
       var ball = game.createEntity([
         ['Position', { x: -2, y: 205 }],
+        ['Velocity', { x: 0.1, y: -0.1 }],
         ['Size', { width: 10, height: 10 }],
         ['Glue', { target: paddle, offset: { x: -2, y: -15 } }],
         ['Offset', { x: 5, y: 5 }],

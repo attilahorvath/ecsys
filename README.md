@@ -17,7 +17,6 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Error reporting - wrong component name, nonexistent property, etc.
 - Delete expired timers
 - Acceleration component
-- Click event, mouse buttons, justPressed, justReleased, investigate options for capturing all mouse buttons
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Mobile support - touch input, viewport changes, etc.
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
