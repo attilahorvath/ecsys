@@ -1,14 +1,14 @@
 # Ecsys
 A simple, extendable JavaScript game engine powered by the entity-component-system pattern.
 
-As Ecsys is only a few days old, it should not be considered to be even in a pre-alpha state. At this point everything can (and quite possibly will) change regarding its architecture, implementation and API. However, I really hope I can make something useful out of it which could help me and possibly others quickly prototype and power small-scaled browser games.
+As Ecsys is in its very early stage of development, it should not be considered to be even in a pre-alpha state. At this point everything can (and quite possibly will) change regarding its architecture, implementation and API. However, I really hope I can make something useful out of it which could help me and possibly others quickly prototype and power small-scale browser games.
 
 I will write a detailed documentation and tutorials explaining how to use it once the engine reaches at least some semblance of stability. Until then, the included sample games should serve as the de facto API documentation.
 
 ## Sample games
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/samples/block_buster/block_buster.html), a Breakout clone (not yet playable)
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/samples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
-- [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone
+- [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone (not yet playable)
 
 ## Project priorities / To-Do List
 - Skew component
