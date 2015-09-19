@@ -8,6 +8,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 ## Sample games
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/samples/block_buster/block_buster.html), a Breakout clone (not yet playable)
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/samples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
+- [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone
 
 ## Project priorities / To-Do List
 - Skew component
@@ -18,6 +19,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Acceleration component
 - Click event, mouse buttons, justPressed, justReleased, investigate options for capturing all mouse buttons
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
+- Mobile support - touch input, viewport changes, etc.
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Sprites that are drawn straight to the canvas without cameras - useful for UI elements
 - Game states with transitions
