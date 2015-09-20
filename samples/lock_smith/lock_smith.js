@@ -19,6 +19,19 @@
 
       game.initialize();
 
+      game.createEntity([
+        ['Position', { x: 10, y: 10 }],
+        ['Size', { width: 320, height: 240 }],
+        ['Text', { text: 'Level 1' }],
+        ['Color', { color: 'red' }]
+      ]);
+
+      game.createEntity([
+        ['Position', { x: 0, y: 0 }],
+        ['Size', { width: 320, height: 240 }],
+        ['Camera', { canvasX: 0, canvasY: 0 }]
+      ]);
+
       game.main();
     }
   };

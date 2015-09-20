@@ -11,16 +11,15 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone (not yet playable)
 
 ## Project priorities / To-Do List
+- Font loader/cache, like ImageCache
+- Inject game dependency into input handlers
 - Skew component
-- Tint component
-- Text rendering - font, size, color, etc.
 - Error reporting - wrong component name, nonexistent property, etc.
 - Delete expired timers
 - Acceleration component
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Mobile support - touch input, viewport changes, etc.
 - Composite entities - entities that are made up of other entities, such as a tank base and turret
-- Sprites that are drawn straight to the canvas without cameras - useful for UI elements
 - Game states with transitions
 - Tree-view for entities and their components
 - FPS counter

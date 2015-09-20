@@ -22,6 +22,9 @@
 
   Ecsys.ComponentTypes.push('Collidable');
 
+  Ecsys.ComponentTypes.push('Color');
+  Ecsys.ComponentTypes.push('Text');
+
   Ecsys.ComponentTypes.push('Animations');
   Ecsys.ComponentTypes.push('Shake');
 

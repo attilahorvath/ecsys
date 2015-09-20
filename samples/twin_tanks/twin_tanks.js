@@ -18,7 +18,6 @@
       game.systems.push(Ecsys.Systems.LifetimeSystem);
       game.systems.push(TwinTanks.Systems.TankSystem);
 
-
       game.initialize();
 
       for (var y = -1280; y < 1280; y += 128) {

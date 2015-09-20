@@ -30,28 +30,40 @@
       }.bind(this));
 
       addEventListener('mousedown', function(event) {
-        this.buttonsDown = {};
+        var position = { x: event.clientX - this.canvas.offsetLeft, y: event.clientY - this.canvas.offsetTop };
 
-        for (var button in this.BUTTONS) {
-          if (event.buttons & this.BUTTONS[button]) {
-            this.buttonsDown[button] = true;
+        if (!this.restrictPosition || (position.x >= 0 && position.y >= 0 && position.x <= this.canvas.width && position.y <= this.canvas.height)) {
+          this.buttonsDown = {};
+
+          for (var button in this.BUTTONS) {
+            if (event.buttons & this.BUTTONS[button]) {
+              this.buttonsDown[button] = true;
+            }
           }
         }
       }.bind(this));
 
       addEventListener('mouseup', function(event) {
-        this.buttonsDown = {};
+        var position = { x: event.clientX - this.canvas.offsetLeft, y: event.clientY - this.canvas.offsetTop };
 
-        for (var button in this.BUTTONS) {
-          if (event.buttons & this.BUTTONS[button] != 0) {
-            this.buttonsDown[button] = true;
+        if (!this.restrictPosition || (position.x >= 0 && position.y >= 0 && position.x <= this.canvas.width && position.y <= this.canvas.height)) {
+          this.buttonsDown = {};
+
+          for (var button in this.BUTTONS) {
+            if (event.buttons & this.BUTTONS[button] != 0) {
+              this.buttonsDown[button] = true;
+            }
           }
         }
       }.bind(this));
 
       addEventListener('contextmenu', function(event) {
-        if (this.captureRightClick) {
-          event.preventDefault();
+        var position = { x: event.clientX - this.canvas.offsetLeft, y: event.clientY - this.canvas.offsetTop };
+
+        if (!this.restrictPosition || (position.x >= 0 && position.y >= 0 && position.x <= this.canvas.width && position.y <= this.canvas.height)) {
+          if (this.captureRightClick) {
+            event.preventDefault();
+          }
         }
       }.bind(this));
     },

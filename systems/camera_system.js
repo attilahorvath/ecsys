@@ -32,6 +32,8 @@
         var entityScaling = this.game.getComponent(e, 'Scaling') || { x: 1, y: 1 };
         var entityRotation = this.game.getComponent(e, 'Rotation') || { angle: 0 };
         var entityTransparency = this.game.getComponent(e, 'Transparency') || { alpha: 1 };
+        var entityText = this.game.getComponent(e, 'Text');
+        var entityColor = this.game.getComponent(e, 'Color') || { color: 'black' };
 
         var entityPos = { x: entityPosition.x - entityOffset.x, y: entityPosition.y - entityOffset.y };
 
@@ -39,7 +41,7 @@
           var sprite;
           var image;
 
-          if (sprite = this.game.getComponent(e, 'Sprite')) {
+          if ((sprite = this.game.getComponent(e, 'Sprite')) && sprite.source) {
             image = this.game.getImageCache().getImage(sprite.source);
           }
 
@@ -56,13 +58,20 @@
 
             context.drawImage(image, imagePosition.x, imagePosition.y, imageSize.width, imageSize.height, -entityOffset.x, -entityOffset.y, entitySize.width, entitySize.height);
           }
-          else {
+          else if (sprite) {
             context.fillRect(-entityOffset.x, -entityOffset.y, entitySize.width, entitySize.height);
+          }
+
+          if (entityText) {
+            context.font = entityText.font || '48px sans-serif';
+            context.textBaseline = entityText.baseline || 'hanging';
+            context.fillStyle = entityColor.color;
+            context.fillText(entityText.text, -entityOffset.x, -entityOffset.y, entitySize.width);
           }
 
           context.restore();
         }
-      }.bind(this), ['Position', 'Size', 'Sprite']);
+      }.bind(this), ['Position', 'Size']);
 
       context.restore();
 
