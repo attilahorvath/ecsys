@@ -11,7 +11,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone (not yet playable)
 
 ## Project priorities / To-Do List
-- InviziMaze - sample game about navigationg through an invisible maze
+- InviziMaze - sample game about navigating through an invisible maze
 - Set background color
 - HSV color animation
 - Drawable component for entities that appear on cameras - Sprite, Text, etc.
