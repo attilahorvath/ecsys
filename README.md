@@ -14,7 +14,8 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Set background color
 - HSV color animation
 - Drawable component for entities that appear on cameras - Sprite, Text, etc.
-- Merge Color with Text
+- AngularVelocity component, rotation system
+- StrokeColor, FillColor for text, rects, polygon drawing
 - Show/hide sprites on certain cameras
 - Font loader/cache, like ImageCache
 - Inject game dependency into input handlers
