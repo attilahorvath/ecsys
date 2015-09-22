@@ -11,6 +11,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone (not yet playable)
 
 ## Project priorities / To-Do List
+- Replace componentMasks bitfield with some other solution because currently it can only support 32 bits
 - InviziMaze - sample game about navigating through an invisible maze
 - Set background color
 - HSV color animation
@@ -26,7 +27,6 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Acceleration component
 - Extended KeyboardInputSystem preventDefault configuration - ability to let e.g. refresh event through while capturing others
 - Mobile support - touch input, viewport changes, etc.
-- Composite entities - entities that are made up of other entities, such as a tank base and turret
 - Game states with transitions
 - Tree-view for entities and their components
 - FPS counter
@@ -34,7 +34,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - JSON import/export of entities and their components
 - More easing functions
 - Preload images, images loaded event
-- OBB collisions - separating axis theorem
+- OBB collisions - separating axis theorem, use AABB whenever possible (no Rotation component)
 - Support for arbitrary convex polygons
 - Basic physics
 - Basic ray casting
@@ -59,7 +59,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Consolidate components (position-size-offset-constraints?)
 - Look into [Electron](https://github.com/atom/electron) for creating desktop games with Ecsys
 - Set up some build system to automatically generate minified version of the code
-- Make more sample games - clone some simple ones, such as circular pong, Pop the Lock, etc.
+- Make more sample games - clone some simple ones, like circular pong
 
 Ecsys is licensed under the included MIT license.
 
