@@ -15,10 +15,9 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - InviziMaze - sample game about navigating through an invisible maze
 - Set background color
 - HSV color animation
-- Drawable component for entities that appear on cameras - Sprite, Text, etc.
 - AngularVelocity component, rotation system
+- AngularAccelaration
 - StrokeColor, FillColor for text, rects, polygon drawing
-- Show/hide sprites on certain cameras
 - Font loader/cache, like ImageCache
 - Inject game dependency into input handlers
 - Skew component

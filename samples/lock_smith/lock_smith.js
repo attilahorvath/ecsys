@@ -23,6 +23,7 @@
         ['Position', { x: 10, y: 10 }],
         ['Size', { width: 320, height: 240 }],
         ['Text', { text: 'Level 1' }],
+        ['Drawable'],
         ['Color', { color: 'red' }]
       ]);
 

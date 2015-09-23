@@ -14,8 +14,10 @@
   Ecsys.ComponentTypes.push('KeyboardInput');
   Ecsys.ComponentTypes.push('MouseInput');
 
-  Ecsys.ComponentTypes.push('Sprite');
+  Ecsys.ComponentTypes.push('Drawable');
   Ecsys.ComponentTypes.push('Camera');
+
+  Ecsys.ComponentTypes.push('Sprite');
 
   Ecsys.ComponentTypes.push('Constraints');
   Ecsys.ComponentTypes.push('Glue');

@@ -25,7 +25,8 @@
           game.createEntity([
             ['Position', { x: x, y: y }],
             ['Size', { width: 128, height: 128 }],
-            ['Sprite', { source: 'images/grass.jpg' }]
+            ['Sprite', { source: 'images/grass.jpg' }],
+            ['Drawable']
           ]);
         }
       }
@@ -38,6 +39,7 @@
         ['KeyboardInput', { speed: 0.1, inputHandlers: [Ecsys.KeyboardInputHandlers.keyboardMovement, TwinTanks.KeyboardInputHandlers.fire] }],
         ['Shake', { intensity: 1.1 }],
         ['Sprite', { source: 'images/tank.png' }],
+        ['Drawable'],
         ['Tank']
       ]);
 
@@ -52,7 +54,8 @@
         ['Size', { width: 16, height: 16 }],
         ['Offset', { x: 8, y: 8 }],
         ['Velocity', { x: 0, y: 0, setRotation: true }],
-        ['Sprite', { source: 'images/bullet.png' }]
+        ['Sprite', { source: 'images/bullet.png' }],
+        ['Drawable']
       ]);
 
       game.setTemplate('Smoke', [
@@ -61,6 +64,7 @@
         ['Offset', { x: 16, y: 16 }],
         ['Transparency', { alpha: 0.9 }],
         ['Sprite', { source: 'images/smoke.png' }],
+        ['Drawable'],
         ['Scaling', { x: 1, y: 1 }],
         ['Animations', [
           { component: 'Transparency', property: 'alpha', target: 0, duration: 1000 },
