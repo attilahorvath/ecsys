@@ -12,6 +12,7 @@
       game.systems.push(Ecsys.Systems.AnimationSystem);
       game.systems.push(Ecsys.Systems.ShakeSystem);
       game.systems.push(Ecsys.Systems.MovementSystem);
+      game.systems.push(Ecsys.Systems.RotationSystem);
       game.systems.push(Ecsys.Systems.GlueSystem);
       game.systems.push(Ecsys.Systems.CollisionSystem);
       game.systems.push(Ecsys.Systems.CameraSystem);

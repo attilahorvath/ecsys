@@ -9,6 +9,8 @@
   Ecsys.ComponentTypes.push('Rotation');
 
   Ecsys.ComponentTypes.push('Velocity');
+  Ecsys.ComponentTypes.push('AngularVelocity');
+
   Ecsys.ComponentTypes.push('Transparency');
 
   Ecsys.ComponentTypes.push('KeyboardInput');

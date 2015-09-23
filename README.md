@@ -15,7 +15,6 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - InviziMaze - sample game about navigating through an invisible maze
 - Set background color
 - HSV color animation
-- AngularVelocity component, rotation system
 - AngularAccelaration
 - StrokeColor, FillColor for text, rects, polygon drawing
 - Font loader/cache, like ImageCache
