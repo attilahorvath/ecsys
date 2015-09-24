@@ -9,6 +9,7 @@
       var rotation = this.game.getComponent(entity, 'Rotation') || this.game.setComponent(entity, 'Rotation', { angle: 0 });
 
       rotation.angle += angularVelocity.velocity * deltaTime;
+      rotation.angle = Ecsys.Utils.normalizeAngle(rotation.angle);
     }
   };
 })();

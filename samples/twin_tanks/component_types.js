@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  Ecsys.ComponentTypes.push('Tank');
+  Ecsys.componentTypes.push('Tank');
 })();

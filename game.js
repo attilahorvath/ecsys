@@ -37,8 +37,8 @@
     this.systems = [];
     this.timers = [];
 
-    for (var i = 0; i < Ecsys.ComponentTypes.length; i++) {
-      this.registerComponentType(Ecsys.ComponentTypes[i]);
+    for (var i = 0; i < Ecsys.componentTypes.length; i++) {
+      this.registerComponentType(Ecsys.componentTypes[i]);
     }
 
     this.lastTime = Date.now();
@@ -50,7 +50,7 @@
   };
 
   Ecsys.Game.componentMask = function(componentType) {
-    return 1 << Ecsys.ComponentTypes.indexOf(componentType);
+    return 1 << Ecsys.componentTypes.indexOf(componentType);
   };
 
   Ecsys.Game.prototype.getCanvas = function() {
@@ -153,6 +153,10 @@
         this.removeComponents(entity, componentTypes);
       }.bind(this), removeTimeout);
     }
+  };
+
+  Ecsys.Game.prototype.hasComponent = function(entity, component) {
+    return (this.componentMasks[entity] & Ecsys.Game.componentMask(component)) == Ecsys.Game.componentMask(component);
   };
 
   Ecsys.Game.prototype.hasComponents = function(entity, components) {
@@ -281,8 +285,8 @@
 
       delete this.componentMasks[entity];
 
-      for (var i = 0; i < Ecsys.ComponentTypes.length; i++) {
-        delete this.components[Ecsys.ComponentTypes[i]][entity];
+      for (var i = 0; i < Ecsys.componentTypes.length; i++) {
+        delete this.components[Ecsys.componentTypes[i]][entity];
       }
 
       for (var name in this.namedEntities) {

@@ -1,36 +1,36 @@
 (function() {
   'use strict';
 
-  Ecsys.ComponentTypes.push('Position');
-  Ecsys.ComponentTypes.push('Size');
+  Ecsys.componentTypes.push('Position');
+  Ecsys.componentTypes.push('Size');
 
-  Ecsys.ComponentTypes.push('Offset');
-  Ecsys.ComponentTypes.push('Scaling');
-  Ecsys.ComponentTypes.push('Rotation');
+  Ecsys.componentTypes.push('Offset');
+  Ecsys.componentTypes.push('Scaling');
+  Ecsys.componentTypes.push('Rotation');
 
-  Ecsys.ComponentTypes.push('Velocity');
-  Ecsys.ComponentTypes.push('AngularVelocity');
+  Ecsys.componentTypes.push('Velocity');
+  Ecsys.componentTypes.push('AngularVelocity');
 
-  Ecsys.ComponentTypes.push('Transparency');
+  Ecsys.componentTypes.push('Transparency');
 
-  Ecsys.ComponentTypes.push('KeyboardInput');
-  Ecsys.ComponentTypes.push('MouseInput');
+  Ecsys.componentTypes.push('KeyboardInput');
+  Ecsys.componentTypes.push('MouseInput');
 
-  Ecsys.ComponentTypes.push('Drawable');
-  Ecsys.ComponentTypes.push('Camera');
+  Ecsys.componentTypes.push('Drawable');
+  Ecsys.componentTypes.push('Camera');
 
-  Ecsys.ComponentTypes.push('Sprite');
+  Ecsys.componentTypes.push('Sprite');
 
-  Ecsys.ComponentTypes.push('Constraints');
-  Ecsys.ComponentTypes.push('Glue');
+  Ecsys.componentTypes.push('Constraints');
+  Ecsys.componentTypes.push('Glue');
 
-  Ecsys.ComponentTypes.push('Collidable');
+  Ecsys.componentTypes.push('Collidable');
 
-  Ecsys.ComponentTypes.push('Color');
-  Ecsys.ComponentTypes.push('Text');
+  Ecsys.componentTypes.push('Color');
+  Ecsys.componentTypes.push('Text');
 
-  Ecsys.ComponentTypes.push('Animations');
-  Ecsys.ComponentTypes.push('Shake');
+  Ecsys.componentTypes.push('Animations');
+  Ecsys.componentTypes.push('Shake');
 
-  Ecsys.ComponentTypes.push('Lifetime');
+  Ecsys.componentTypes.push('Lifetime');
 })();

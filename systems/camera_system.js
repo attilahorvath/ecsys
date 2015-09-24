@@ -78,6 +78,7 @@
             if (entityText) {
               context.font = entityText.font || '48px sans-serif';
               context.textBaseline = entityText.baseline || 'hanging';
+              context.textAlign = entityText.align || 'left';
               context.fillStyle = entityColor.color;
               context.fillText(entityText.text, -entityOffset.x, -entityOffset.y, entitySize.width);
             }

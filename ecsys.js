@@ -2,7 +2,7 @@
   'use strict';
 
   window.Ecsys = {
-    ComponentTypes: [],
+    componentTypes: [],
     Systems: {}
   };
 })();

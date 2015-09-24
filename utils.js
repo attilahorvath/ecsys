@@ -60,6 +60,18 @@
 
     calculateDistance: function(from, to) {
       return Math.sqrt((to.x - from.x) * (to.x - from.x) + (to.y - from.y) * (to.y - from.y));
+    },
+
+    normalizeAngle: function(angle) {
+      while (angle < -Math.PI) {
+        angle += Math.PI * 2;
+      }
+
+      while (angle > Math.PI) {
+        angle -= Math.PI * 2;
+      }
+
+      return angle;
     }
   };
 })();
