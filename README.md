@@ -8,9 +8,11 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 ## Sample games
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/samples/block_buster/block_buster.html), a Breakout clone (not yet playable)
 - [TwinTanks](https://rawgit.com/attilahorvath/ecsys/master/samples/twin_tanks/twin_tanks.html), a split screen multiplayer shooter with tanks (not yet playable)
-- [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone (not yet playable)
+- [LockSmith](https://rawgit.com/attilahorvath/ecsys/master/samples/lock_smith/lock_smith.html), a Pop the Lock clone
 
 ## Project priorities / To-Do List
+- Component manipulation functions should accept entity names as well as IDs
+- Clone entity function
 - Replace componentMasks bitfield with some other solution because currently it can only support 32 bits
 - InviziMaze - sample game about navigating through an invisible maze
 - Set background color
