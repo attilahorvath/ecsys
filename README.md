@@ -14,7 +14,9 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Component manipulation functions should accept entity names as well as IDs
 - Clone entity function
 - Replace componentMasks bitfield with some other solution because currently it can only support 32 bits
-- InviziMaze - sample game about navigating through an invisible maze
+- Make InviziMaze - sample game about navigating through an invisible maze
+- Make Circular pong sample game
+- Make Flappy Bird clone sample game
 - Set background color
 - HSV color animation
 - AngularAccelaration
@@ -59,7 +61,7 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Consolidate components (position-size-offset-constraints?)
 - Look into [Electron](https://github.com/atom/electron) for creating desktop games with Ecsys
 - Set up some build system to automatically generate minified version of the code
-- Make more sample games - clone some simple ones, like circular pong
+- WebGL rendering support
 
 Ecsys is licensed under the included MIT license.
 
