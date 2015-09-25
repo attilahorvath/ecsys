@@ -46,9 +46,10 @@
           var entityRotation = this.game.getComponent(e, 'Rotation') || { angle: 0 };
           var entityTransparency = this.game.getComponent(e, 'Transparency') || { alpha: 1 };
           var entityText = this.game.getComponent(e, 'Text');
-          var entityColor = this.game.getComponent(e, 'Color') || { color: 'black' };
+          var entityColor = this.game.getComponent(e, 'Color') || { value: 'black' };
 
           var entityPos = { x: entityPosition.x - entityOffset.x, y: entityPosition.y - entityOffset.y };
+          var entityColorValue = typeof entityColor.value != 'undefined' ? entityColor.value : Ecsys.Utils.parseColorValue(entityColor);
 
           if (!(entityPos.x + entitySize.width <= cameraPos.x || entityPos.x >= cameraPos.x + cameraSize.width || entityPos.y + entitySize.height <= cameraPos.y || entityPosition.y >= cameraPos.y + cameraSize.height)) {
             var sprite;
@@ -72,6 +73,7 @@
               context.drawImage(image, imagePosition.x, imagePosition.y, imageSize.width, imageSize.height, -entityOffset.x, -entityOffset.y, entitySize.width, entitySize.height);
             }
             else if (sprite) {
+              context.fillStyle = entityColorValue;
               context.fillRect(-entityOffset.x, -entityOffset.y, entitySize.width, entitySize.height);
             }
 
@@ -79,7 +81,7 @@
               context.font = entityText.font || '48px sans-serif';
               context.textBaseline = entityText.baseline || 'hanging';
               context.textAlign = entityText.align || 'left';
-              context.fillStyle = entityColor.color;
+              context.fillStyle = entityColorValue;
               context.fillText(entityText.text, -entityOffset.x, -entityOffset.y, entitySize.width);
             }
 

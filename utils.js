@@ -72,6 +72,16 @@
       }
 
       return angle;
+    },
+
+    parseColorValue: function(color) {
+      var alpha = typeof color.alpha != 'undefined' ? color.alpha : 1;
+
+      if (typeof color.red != 'undefined' && typeof color.green != 'undefined' && typeof color.blue != 'undefined') {
+        return 'rgba(' + color.red + ',' + color.green + ',' + color.blue + ',' + alpha + ')';
+      } else if (typeof color.hue != 'undefined' && typeof color.saturation != 'undefined' && typeof color.lightness != 'undefined') {
+        return 'hsla(' + color.hue + ',' + color.saturation + ',' + color.lightness + ',' + alpha + ')';
+      }
     }
   };
 })();
