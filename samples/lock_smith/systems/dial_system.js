@@ -58,6 +58,11 @@
               var shackleEntity = this.game.getEntity('Shackle');
 
               this.game.setComponent(shackleEntity, 'Animations', [{ component: 'Position', target: { x: 160, y: 20 }, duration: 1000, easing: Ecsys.Easings.easeOutElastic }]);
+
+              var backgroundEntity = this.game.getEntity('Background');
+              var backgroundHue = this.game.getComponent(backgroundEntity, 'Color').hue;
+
+              this.game.setComponent(backgroundEntity, 'Animations', [{ component: 'Color', property: 'hue', target: backgroundHue + 30 + Math.random() * 90, duration: 1000 }]);
             }
           } else {
             var cameraEntity = this.game.getEntity('Camera');

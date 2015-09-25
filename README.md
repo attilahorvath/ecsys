@@ -18,7 +18,6 @@ I will write a detailed documentation and tutorials explaining how to use it onc
 - Make Circular pong sample game
 - Make Flappy Bird clone sample game
 - Set background color
-- HSV color animation
 - AngularAccelaration
 - StrokeColor, FillColor for text, rects, polygon drawing
 - Font loader/cache, like ImageCache

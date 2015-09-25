@@ -23,6 +23,14 @@
       game.initialize();
 
       game.createEntity([
+        ['Position', { x: -10, y: -10 }],
+        ['Size', { width: 340, height: 340 }],
+        ['Sprite'],
+        ['Color', { hue: 0, saturation: '100%', lightness: '75%' }],
+        ['Drawable']
+      ], 'Background');
+
+      game.createEntity([
         ['Position', { x: 160, y: 70 }],
         ['Size', { width: 98, height: 164 }],
         ['Sprite', { source: 'images/shackle.png' }],
