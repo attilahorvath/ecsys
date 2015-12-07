@@ -1,0 +1,46 @@
+{
+  "name": "ecsys",
+  "version": "0.1.0",
+  "description": "A simple, extendable JavaScript game engine powered by the entity-component-system pattern.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attilahorvath/ecsys.git"
+  },
+  "keywords": [
+    "game",
+    "engine",
+    "ecs",
+    "entity",
+    "component",
+    "system",
+    "canvas",
+    "2d"
+  ],
+  "author": "Attila Horváth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/attilahorvath/ecsys/issues"
+  },
+  "homepage": "https://github.com/attilahorvath/ecsys#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-uglify": "^1.5.1",
+    "mocha": "^2.3.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
