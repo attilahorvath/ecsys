@@ -1,9 +1,14 @@
 # Ecsys
+
 A simple, extendable JavaScript game engine powered by the entity-component-system pattern.
 
 As Ecsys is in its very early stage of development, it should not be considered to be even in a pre-alpha state. At this point everything can (and quite possibly will) change regarding its architecture, implementation and API. However, I really hope I can make something useful out of it which could help me and possibly others quickly prototype and power small-scale browser games.
 
 I will write a detailed documentation and tutorials explaining how to use it once the engine reaches at least some semblance of stability. Until then, the included sample games should serve as the de facto API documentation.
+
+## Update 12/7/2015
+
+I have decided to rewrite the entire thing using modern JavaScript tools. The code in the `master` branch should now be considered abandoned as all new development will take place in the `rewrite` branch which will be merged into `master` once it becomes mature enough.
 
 ## Sample games
 - [BlockBuster](https://rawgit.com/attilahorvath/ecsys/master/samples/block_buster/block_buster.html), a Breakout clone (not yet playable)
