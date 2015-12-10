@@ -48,10 +48,6 @@ class Game {
 
     this.lastTime = currentTime;
 
-    for (let entity of this.entities.values()) {
-      console.log(entity.components.position);
-    }
-
     requestNextFrame(() => this.run());
   }
 }

@@ -1,8 +1,10 @@
 'use strict';
 
+const getImage = require('../get_image').default;
+
 class Renderer {
   constructor(canvasSelector) {
-    // TODO Use canvasSelector
+    // TODO Use canvasSelector if provided
 
     if (typeof document !== 'undefined') {
       this.canvas = document.createElement('canvas');
@@ -18,7 +20,17 @@ class Renderer {
 
       this.game.forEachEntity(entity => {
         if (entity.components.position) {
-          this.context.fillRect(entity.components.position.x, entity.components.position.y, 10, 10);
+          let image = null;
+
+          if (entity.components.sprite) {
+            image = getImage(entity.components.sprite.image);
+          }
+
+          if (image) {
+            this.context.drawImage(image, entity.components.position.x, entity.components.position.y);
+          } else {
+            this.context.fillRect(entity.components.position.x, entity.components.position.y, 10, 10);
+          }
         }
       });
     }

@@ -1,8 +1,8 @@
 {
-  "name": "ecsys",
+  "name": "lock_smith",
   "version": "0.1.0",
-  "description": "A simple, extendable JavaScript game engine powered by the entity-component-system pattern.",
-  "main": "lib/ecsys.js",
+  "description": "A Pop the Lock clone powered by Ecsys.",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
@@ -53,5 +53,8 @@
       "es6": true
     },
     "extends": "eslint:recommended"
+  },
+  "dependencies": {
+    "ecsys": "file:../../"
   }
 }

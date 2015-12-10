@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const Game = require('../compiled/game').default;
+const Game = require('../lib/ecsys/game').default;
 
 describe('Game', () => {
   let game;

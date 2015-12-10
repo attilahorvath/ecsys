@@ -1,21 +1,25 @@
 'use strict';
 
-import Game from './game';
-import Entity from './entity';
-import Position from './components/position';
-import Camera from './components/camera';
-import Gravity from './systems/gravity';
-import Renderer from './systems/renderer';
+import Game from './ecsys/game';
+import Entity from './ecsys/entity';
 
-let game = new Game();
+import Camera from './ecsys/components/camera';
+import Position from './ecsys/components/position';
+import Sprite from './ecsys/components/sprite';
 
-game.addSystem(new Gravity);
-game.addSystem(new Renderer);
+import Gravity from './ecsys/systems/gravity';
+import Renderer from './ecsys/systems/renderer';
 
-game.addEntity(new Entity([new Position(10, 50)]));
-game.addEntity(new Entity([new Position(50, 20)]));
-game.addEntity(new Entity([new Position]));
+module.exports.Game = Game;
+module.exports.Entity = Entity;
 
-game.addEntity(new Entity([new Camera()]));
+module.exports.Components = {};
 
-game.run();
+module.exports.Components.Camera = Camera;
+module.exports.Components.Position = Position;
+module.exports.Components.Sprite = Sprite;
+
+module.exports.Systems = {};
+
+module.exports.Systems.Gravity = Gravity;
+module.exports.Systems.Renderer = Renderer;
